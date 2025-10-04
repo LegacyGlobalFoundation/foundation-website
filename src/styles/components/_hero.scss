@@ -1,0 +1,188 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // Beautiful sunset/people walking image background
+  background-image: url('/Gemini_Generated_Image_849oaj849oaj849o.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+
+  // Fallback gradient if image doesn't load
+  background-color: $background-base;
+  
+  @include mobile-only {
+    background-attachment: scroll; // Better performance on mobile
+  }
+
+  // Dark overlay for text legibility as per specifications
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba($dark-header-bg, 0.7) 0%,
+      rgba($secondary-accent, 0.6) 50%,
+      rgba($dark-header-bg, 0.8) 100%
+    );
+    z-index: 1;
+  }
+
+  &__container {
+    @include container;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: $white;
+    padding-top: $spacing-4xl;
+    padding-bottom: $spacing-4xl;
+  }
+
+  &__headline {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-lg;
+    background: linear-gradient(135deg, $primary-accent 0%, color.adjust($primary-accent, $lightness: 20%) 50%, $white 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba($dark-header-bg, 0.3);
+
+    @include tablet-up {
+      font-size: $font-size-5xl;
+    }
+
+    @include desktop-up {
+      font-size: 4rem; // 64px
+    }
+  }
+
+  &__subheading {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-regular;
+    line-height: 1.6;
+    margin-bottom: $spacing-2xl;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 3px rgba($dark-header-bg, 0.5);
+    opacity: 0.95;
+
+    @include tablet-up {
+      font-size: $font-size-xl;
+    }
+
+    @include desktop-up {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: $spacing-2xl;
+
+    @include mobile-only {
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-md;
+    }
+  }
+
+  &__button {
+    @include button-base;
+    padding: $spacing-lg $spacing-2xl;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    border-radius: $border-radius-lg;
+    text-decoration: none;
+    transition: all $transition-base;
+    min-width: 200px;
+
+    &--primary {
+      background: linear-gradient(135deg, $primary-accent 0%, color.adjust($primary-accent, $lightness: -10%) 100%);
+      color: $white;
+      border: 2px solid transparent;
+
+      &:hover {
+        background: linear-gradient(135deg, color.adjust($primary-accent, $lightness: 5%) 0%, $primary-accent 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba($primary-accent, 0.4);
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: $white;
+      border: 2px solid rgba($white, 0.8);
+      backdrop-filter: blur(10px);
+
+      &:hover {
+        background: rgba($white, 0.1);
+        border-color: $white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba($white, 0.2);
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @include mobile-only {
+    min-height: 80vh;
+
+    &__container {
+      padding-top: $spacing-2xl;
+      padding-bottom: $spacing-2xl;
+    }
+  }
+
+  // Scroll indicator
+  &__scroll-indicator {
+    position: absolute;
+    bottom: $spacing-2xl;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: rgba($white, 0.8);
+    font-size: $font-size-sm;
+    text-align: center;
+    animation: bounce 2s infinite;
+
+    &::before {
+      content: '↓';
+      display: block;
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-xs;
+    }
+
+    @include mobile-only {
+      display: none;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}

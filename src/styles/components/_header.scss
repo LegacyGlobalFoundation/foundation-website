@@ -1,0 +1,86 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, $dark-header-bg 0%, rgba($secondary-accent, 0.9) 100%);
+  box-shadow: $shadow-lg;
+  z-index: $z-index-fixed;
+  
+  &__container {
+    @include container;
+    @include flex-between;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-md;
+  }
+  
+  &__logo {
+    @include flex-center;
+    gap: $spacing-sm;
+    
+    &-icon {
+      font-size: $font-size-2xl;
+      color: $primary-accent;
+    }
+    
+    &-text {
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      color: $primary-accent;
+      text-decoration: none;
+      
+      &:hover {
+        color: color.adjust($primary-accent, $lightness: 10%);
+      }
+    }
+  }
+  
+  &__nav {
+    @include mobile-only {
+      display: none;
+    }
+  }
+  
+  &__mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: $white;
+    font-size: $font-size-xl;
+    cursor: pointer;
+    padding: $spacing-sm;
+    border-radius: $border-radius;
+    transition: color $transition-base;
+    
+    &:hover {
+      color: $primary-accent;
+    }
+    
+    @include focus-ring;
+    
+    @include mobile-only {
+      display: block;
+    }
+  }
+  
+  &__mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, $dark-header-bg 0%, rgba($secondary-accent, 0.95) 100%);
+    border-top: 1px solid rgba($primary-accent, 0.3);
+    padding: $spacing-lg;
+    
+    &--hidden {
+      display: none;
+    }
+    
+    @include tablet-up {
+      display: none !important;
+    }
+  }
+}

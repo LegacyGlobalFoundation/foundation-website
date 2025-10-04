@@ -1,0 +1,180 @@
+@use '../abstracts' as *;
+
+.mission {
+  padding: $spacing-4xl 0;
+  background: linear-gradient(135deg, $white 0%, rgba($background-base, 0.8) 100%);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23FF8800" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></svg>');
+    opacity: 0.6;
+    z-index: 1;
+  }
+
+  &__container {
+    @include container;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+
+    @include tablet-up {
+      margin-bottom: $spacing-4xl;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $secondary-accent;
+    margin-bottom: $spacing-lg;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -$spacing-md;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, $primary-accent 0%, $secondary-accent 100%);
+      border-radius: $border-radius-full;
+    }
+
+    @include tablet-up {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-xl;
+    color: $text-color;
+    font-weight: $font-weight-medium;
+    opacity: 0.9;
+
+    @include tablet-up {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__intro {
+    font-size: $font-size-lg;
+    line-height: 1.8;
+    color: $text-color;
+    margin-bottom: $spacing-2xl;
+    text-align: center;
+    font-weight: $font-weight-regular;
+
+    @include tablet-up {
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-3xl;
+    }
+  }
+
+  &__perspectives {
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__perspective {
+    background: rgba($white, 0.8);
+    padding: $spacing-xl;
+    margin-bottom: $spacing-lg;
+    border-radius: $border-radius-lg;
+    border-left: 4px solid $primary-accent;
+    position: relative;
+    transition: all $transition-base;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      transform: translateX($spacing-sm);
+      box-shadow: $shadow-md;
+      border-left-color: $secondary-accent;
+    }
+
+    &:nth-child(even) {
+      border-left-color: $secondary-accent;
+
+      &:hover {
+        border-left-color: $primary-accent;
+      }
+    }
+
+    &::before {
+      content: counter(perspective-counter);
+      counter-increment: perspective-counter;
+      position: absolute;
+      top: -$spacing-sm;
+      left: $spacing-lg;
+      background: linear-gradient(135deg, $primary-accent 0%, $secondary-accent 100%);
+      color: $white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-sm;
+    }
+
+    p {
+      margin: 0;
+      font-size: $font-size-base;
+      line-height: 1.7;
+      color: $text-color;
+
+      @include tablet-up {
+        font-size: $font-size-lg;
+      }
+    }
+  }
+
+  &__closing {
+    text-align: center;
+    
+    p {
+      font-size: $font-size-lg;
+      line-height: 1.8;
+      color: $text-color;
+      margin-bottom: $spacing-lg;
+      font-weight: $font-weight-medium;
+
+      @include tablet-up {
+        font-size: $font-size-xl;
+      }
+    }
+
+    &-highlight {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      background: linear-gradient(135deg, $primary-accent 0%, $secondary-accent 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-top: $spacing-lg;
+
+      @include tablet-up {
+        font-size: $font-size-2xl;
+      }
+    }
+  }
+
+  // Counter reset for perspective numbering
+  counter-reset: perspective-counter;
+}

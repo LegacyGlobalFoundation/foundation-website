@@ -1,0 +1,196 @@
+@use 'sass:color';
+
+// Responsive breakpoint mixins
+@mixin mobile-up {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin large-desktop-up {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// Mobile-first responsive mixins
+@mixin mobile-only {
+  @media (max-width: #{$breakpoint-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: $breakpoint-md) and (max-width: #{$breakpoint-lg - 1px}) {
+    @content;
+  }
+}
+
+// Sophisticated card effect mixin
+@mixin sophisticated-card {
+  position: relative;
+  transition: transform $transition-base, box-shadow $transition-base;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $primary-accent 0%, $secondary-accent 100%);
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg, 0 8px 25px rgba($secondary-accent, 0.15);
+  }
+}
+
+// Button base styles
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md $spacing-lg;
+  border: none;
+  border-radius: $border-radius;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  
+  &:focus {
+    outline: 2px solid $primary-accent;
+    outline-offset: 2px;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Primary button variant
+@mixin button-primary {
+  @include button-base;
+  background-color: $primary-accent;
+  color: $white;
+  
+  &:hover:not(:disabled) {
+    background-color: color.adjust($primary-accent, $lightness: -10%);
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Secondary button variant
+@mixin button-secondary {
+  @include button-base;
+  background: linear-gradient(135deg, transparent 0%, rgba($secondary-accent, 0.1) 100%);
+  color: $secondary-accent;
+  border: 2px solid $secondary-accent;
+  
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, $secondary-accent 0%, color.adjust($secondary-accent, $lightness: -10%) 100%);
+    color: $white;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md, 0 4px 12px rgba($secondary-accent, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Purple button variant
+@mixin button-purple {
+  @include button-base;
+  background: linear-gradient(135deg, $secondary-accent 0%, color.adjust($secondary-accent, $lightness: -15%) 100%);
+  color: $white;
+  
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, color.adjust($secondary-accent, $lightness: 5%) 0%, $secondary-accent 100%);
+    transform: translateY(-2px);
+    box-shadow: $shadow-md, 0 4px 12px rgba($secondary-accent, 0.4);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Text utilities
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Layout utilities
+@mixin container {
+  width: 100%;
+  max-width: $breakpoint-xl;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-lg;
+  padding-right: $spacing-lg;
+  
+  @include tablet-up {
+    padding-left: $spacing-xl;
+    padding-right: $spacing-xl;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Smooth scrolling
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+// Focus styles
+@mixin focus-ring {
+  &:focus {
+    outline: 2px solid $primary-accent;
+    outline-offset: 2px;
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}

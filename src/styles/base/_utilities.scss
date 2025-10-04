@@ -1,0 +1,88 @@
+@use '../abstracts' as *;
+
+// Container utility
+.container {
+  @include container;
+}
+
+// Layout utilities
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.flex-between {
+  @include flex-between;
+}
+
+.grid {
+  display: grid;
+}
+
+// Spacing utilities
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+
+// Text utilities
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: $primary-accent; }
+.text-secondary { color: $secondary-accent; }
+.text-white { color: $white; }
+.text-dark { color: $text-color; }
+
+.font-light { font-weight: $font-weight-light; }
+.font-medium { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold { font-weight: $font-weight-bold; }
+
+// Background utilities
+.bg-primary { background-color: $primary-accent; }
+.bg-secondary { background-color: $secondary-accent; }
+.bg-white { background-color: $white; }
+.bg-warm { background-color: $background-base; }
+.bg-dark { background-color: $dark-header-bg; }
+
+// Button utilities
+.btn-primary {
+  @include button-primary;
+}
+
+.btn-secondary {
+  @include button-secondary;
+}
+
+.btn-purple {
+  @include button-purple;
+}
+
+// Card utilities
+.sophisticated-card {
+  @include sophisticated-card;
+}
+
+// Visibility utilities
+.hidden { display: none; }
+.visible { display: block; }
+
+@include mobile-only {
+  .hidden-mobile { display: none; }
+  .visible-mobile { display: block; }
+}
+
+@include tablet-up {
+  .hidden-tablet { display: none; }
+  .visible-tablet { display: block; }
+}
+
+@include desktop-up {
+  .hidden-desktop { display: none; }
+  .visible-desktop { display: block; }
+}

@@ -1,0 +1,250 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+.contact {
+  padding: $spacing-4xl 0;
+  background: linear-gradient(135deg, $text-color 0%, color.adjust($text-color, $lightness: -5%) 100%);
+  color: $white;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba($primary-accent, 0.08) 50%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &__container {
+    @include container;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-4xl;
+
+    h2 {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
+      color: $primary-accent;
+      margin-bottom: $spacing-lg;
+
+      @include tablet-up {
+        font-size: $font-size-4xl;
+      }
+    }
+
+    &-subtitle {
+      font-size: $font-size-xl;
+      color: $white;
+      font-weight: $font-weight-medium;
+      margin-bottom: $spacing-lg;
+      opacity: 0.9;
+
+      @include tablet-up {
+        font-size: $font-size-2xl;
+      }
+    }
+
+    &-description {
+      font-size: $font-size-lg;
+      color: $white;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+      opacity: 0.85;
+
+      @include tablet-up {
+        font-size: $font-size-xl;
+      }
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: $spacing-3xl;
+
+    @include tablet-up {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-4xl;
+    }
+  }
+
+  &__info {
+    &-title {
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      color: $primary-accent;
+      margin-bottom: $spacing-xl;
+
+      @include tablet-up {
+        font-size: $font-size-3xl;
+      }
+    }
+
+    &-item {
+      background: rgba($white, 0.08);
+      border-radius: $border-radius-lg;
+      padding: $spacing-lg;
+      margin-bottom: $spacing-lg;
+      border-left: 4px solid $primary-accent;
+      transition: all $transition-base;
+
+      &:hover {
+        background: rgba($white, 0.12);
+        transform: translateX($spacing-sm);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      h4 {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-bold;
+        color: $white;
+        margin-bottom: $spacing-sm;
+
+        @include tablet-up {
+          font-size: $font-size-xl;
+        }
+      }
+
+      p {
+        font-size: $font-size-base;
+        color: $white;
+        margin: 0;
+        line-height: 1.6;
+        opacity: 0.9;
+
+        @include tablet-up {
+          font-size: $font-size-lg;
+        }
+      }
+
+      a {
+        color: $primary-accent;
+        text-decoration: none;
+        font-weight: $font-weight-medium;
+        transition: color $transition-base;
+
+        &:hover {
+          color: color.adjust($primary-accent, $lightness: 10%);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__form {
+    background: rgba($white, 0.05);
+    border-radius: $border-radius-xl;
+    padding: $spacing-2xl;
+    border: 1px solid rgba($primary-accent, 0.2);
+    backdrop-filter: blur(10px);
+
+    &-title {
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      color: $primary-accent;
+      margin-bottom: $spacing-xl;
+      text-align: center;
+
+      @include tablet-up {
+        font-size: $font-size-3xl;
+        text-align: left;
+      }
+    }
+
+    &-group {
+      margin-bottom: $spacing-lg;
+
+      label {
+        display: block;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        color: $white;
+        margin-bottom: $spacing-sm;
+        opacity: 0.9;
+
+        @include tablet-up {
+          font-size: $font-size-lg;
+        }
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: $spacing-md;
+        border: 2px solid rgba($primary-accent, 0.3);
+        border-radius: $border-radius;
+        background: rgba($white, 0.1);
+        color: $white;
+        font-size: $font-size-base;
+        font-family: inherit;
+        transition: all $transition-base;
+
+        @include tablet-up {
+          font-size: $font-size-lg;
+          padding: $spacing-lg;
+        }
+
+        &::placeholder {
+          color: rgba($white, 0.6);
+        }
+
+        &:focus {
+          outline: none;
+          border-color: $primary-accent;
+          background: rgba($white, 0.15);
+          box-shadow: 0 0 0 3px rgba($primary-accent, 0.2);
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+    }
+
+    &-button {
+      @include button-primary;
+      width: 100%;
+      font-size: $font-size-lg;
+      padding: $spacing-lg $spacing-xl;
+      margin-top: $spacing-md;
+    }
+  }
+
+  &__disclaimer {
+    background: rgba($secondary-accent, 0.1);
+    border-radius: $border-radius-lg;
+    padding: $spacing-xl;
+    margin-top: $spacing-4xl;
+    border: 1px solid rgba($secondary-accent, 0.3);
+    text-align: center;
+
+    p {
+      font-size: $font-size-lg;
+      color: $white;
+      margin: 0;
+      font-style: italic;
+      font-weight: $font-weight-medium;
+      opacity: 0.9;
+
+      @include tablet-up {
+        font-size: $font-size-xl;
+      }
+    }
+
+    strong {
+      color: $primary-accent;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
