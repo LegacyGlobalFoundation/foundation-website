@@ -1,7 +1,7 @@
 @use 'sass:color';
 @use '../abstracts' as *;
 
-.pillars {
+.focus {
   padding: $spacing-4xl 0;
   background: linear-gradient(135deg, rgba($secondary-accent, 0.05) 0%, $background-base 50%, rgba($primary-accent, 0.03) 100%);
   position: relative;
@@ -81,7 +81,7 @@
         background: linear-gradient(90deg, $primary-accent 0%, color.adjust($primary-accent, $lightness: 15%) 100%);
       }
 
-      .pillars__pillar-icon {
+      .focus__pillar-icon {
         color: $primary-accent;
       }
     }
@@ -91,7 +91,7 @@
         background: linear-gradient(90deg, $secondary-accent 0%, color.adjust($secondary-accent, $lightness: 15%) 100%);
       }
 
-      .pillars__pillar-icon {
+      .focus__pillar-icon {
         color: $secondary-accent;
       }
     }
@@ -138,11 +138,11 @@
       margin-bottom: $spacing-xl;
       border-left: 4px solid currentColor;
 
-      .pillars__pillar--basic-needs & {
+      .focus__pillar--basic-needs & {
         border-left-color: $primary-accent;
       }
 
-      .pillars__pillar--forward-tools & {
+      .focus__pillar--forward-tools & {
         border-left-color: $secondary-accent;
       }
 
@@ -178,7 +178,7 @@
         transform: translateX($spacing-sm);
       }
 
-      .pillars__pillar--forward-tools &:hover {
+      .focus__pillar--forward-tools &:hover {
         background: rgba($secondary-accent, 0.05);
       }
 

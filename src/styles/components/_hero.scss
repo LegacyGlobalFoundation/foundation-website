@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   // Beautiful sunset/people walking image background
-  background-image: url('/Gemini_Generated_Image_849oaj849oaj849o.png');
+  background-image: url('/image-8-gemini.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@
   overflow: hidden;
 
   // Fallback gradient if image doesn't load
-  background-color: $background-base;
+  background-color: $primary-accent-light;
   
   @include mobile-only {
     background-attachment: scroll; // Better performance on mobile
@@ -32,9 +32,9 @@
     bottom: 0;
     background: linear-gradient(
       135deg,
-      rgba($dark-header-bg, 0.7) 0%,
-      rgba($secondary-accent, 0.6) 50%,
-      rgba($dark-header-bg, 0.8) 100%
+      rgba($dark-header-bg, 0.5) 0%,
+      rgba($secondary-light, 0.4) 50%,
+      rgba($primary-accent-light, 0.3) 100%
     );
     z-index: 1;
   }

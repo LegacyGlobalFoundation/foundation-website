@@ -2,179 +2,268 @@
 
 .mission {
   padding: $spacing-4xl 0;
-  background: linear-gradient(135deg, $white 0%, rgba($background-base, 0.8) 100%);
+  background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23FF8800" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></svg>');
-    opacity: 0.6;
-    z-index: 1;
-  }
+  min-height: 100vh;
 
   &__container {
     @include container;
-    position: relative;
-    z-index: 2;
-  }
-
-  &__header {
-    text-align: center;
-    margin-bottom: $spacing-3xl;
-
-    @include tablet-up {
-      margin-bottom: $spacing-4xl;
-    }
-  }
-
-  &__title {
-    font-size: $font-size-3xl;
-    font-weight: $font-weight-bold;
-    color: $secondary-accent;
-    margin-bottom: $spacing-lg;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -$spacing-md;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, $primary-accent 0%, $secondary-accent 100%);
-      border-radius: $border-radius-full;
-    }
-
-    @include tablet-up {
-      font-size: $font-size-4xl;
-    }
-  }
-
-  &__subtitle {
-    font-size: $font-size-xl;
-    color: $text-color;
-    font-weight: $font-weight-medium;
-    opacity: 0.9;
-
-    @include tablet-up {
-      font-size: $font-size-2xl;
-    }
-  }
-
-  &__content {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
-  &__intro {
-    font-size: $font-size-lg;
-    line-height: 1.8;
+  // Hero section with main title and description
+  &__hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-2xl;
+    margin-bottom: $spacing-4xl;
+    position: relative;
+
+    @include desktop-up {
+      grid-template-columns: 2fr 1fr;
+      align-items: start;
+    }
+  }
+
+  &__hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: $font-weight-bold;
     color: $text-color;
-    margin-bottom: $spacing-2xl;
-    text-align: center;
-    font-weight: $font-weight-regular;
+    line-height: 1.1;
+    margin-bottom: $spacing-lg;
+
+    @include desktop-up {
+      font-size: clamp(3rem, 4vw, 5rem);
+    }
+  }
+
+  &__hero-accent {
+    color: $primary-accent;
+  }
+
+  &__hero-line {
+    width: 100px;
+    height: 4px;
+    background: $primary-accent;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__hero-description {
+    font-size: $font-size-lg;
+    line-height: 1.6;
+    color: $text-color;
+    max-width: 800px;
+
+    @include desktop-up {
+      font-size: $font-size-xl;
+      line-height: 1.7;
+    }
+  }
+
+  &__hero-pattern {
+    display: none;
+    
+    @include desktop-up {
+      display: block;
+      justify-self: end;
+      align-self: center;
+    }
+  }
+
+  &__pattern-svg {
+    width: 300px;
+    height: 300px;
+    color: $gray-300;
+    transform: rotate(15deg);
+  }
+
+  // Cards section
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xl;
+    position: relative;
+
+    // Subtle background pattern
+    &::before {
+      content: '';
+      position: absolute;
+      top: -$spacing-xl;
+      left: -$spacing-xl;
+      right: -$spacing-xl;
+      bottom: -$spacing-xl;
+      background-image: radial-gradient(circle at 20% 20%, rgba($primary-accent, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba($secondary-light, 0.03) 0%, transparent 50%);
+      border-radius: $border-radius-xl;
+      z-index: 0;
+    }
+  }
+
+  &__cards-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-2xl;
+    position: relative;
+    z-index: 1;
 
     @include tablet-up {
-      font-size: $font-size-xl;
-      margin-bottom: $spacing-3xl;
+      grid-template-columns: 1fr 1fr;
     }
   }
 
-  &__perspectives {
-    margin-bottom: $spacing-3xl;
-  }
-
-  &__perspective {
-    background: rgba($white, 0.8);
-    padding: $spacing-xl;
-    margin-bottom: $spacing-lg;
-    border-radius: $border-radius-lg;
-    border-left: 4px solid $primary-accent;
-    position: relative;
+  &__card {
+    background: linear-gradient(145deg, $silver-light 0%, $silver-medium 50%, $silver-dark 100%);
+    padding: $spacing-2xl;
+    border-radius: $border-radius-xl;
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba($metallic-shine, 0.8),
+      inset 0 -1px 0 rgba($metallic-shadow, 0.3);
     transition: all $transition-base;
-    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba($metallic-shadow, 0.2);
+
+    @include tablet-up {
+      padding: $spacing-3xl;
+    }
+
+    // Metallic shine effect
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg, 
+        transparent 0%, 
+        rgba($metallic-shine, 0.3) 30%, 
+        rgba($metallic-shine, 0.6) 50%, 
+        rgba($metallic-shine, 0.3) 70%, 
+        transparent 100%
+      );
+      transform: skewX(-25deg);
+      transition: left 0.8s ease;
+      z-index: 1;
+    }
+
+    // Colored accent bars for each card type
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      z-index: 2;
+    }
 
     &:hover {
-      transform: translateX($spacing-sm);
-      box-shadow: $shadow-md;
-      border-left-color: $secondary-accent;
-    }
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba($metallic-shine, 0.9),
+        inset 0 -1px 0 rgba($metallic-shadow, 0.4);
+      border-color: rgba($primary-accent, 0.3);
 
-    &:nth-child(even) {
-      border-left-color: $secondary-accent;
-
-      &:hover {
-        border-left-color: $primary-accent;
+      &::before {
+        left: 100%;
       }
     }
 
-    &::before {
-      content: counter(perspective-counter);
-      counter-increment: perspective-counter;
-      position: absolute;
-      top: -$spacing-sm;
-      left: $spacing-lg;
-      background: linear-gradient(135deg, $primary-accent 0%, $secondary-accent 100%);
-      color: $white;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: $font-weight-bold;
-      font-size: $font-size-sm;
+    &--vision {
+      &::after {
+        background: linear-gradient(90deg, $primary-accent 0%, #ff6b35 100%);
+      }
     }
 
-    p {
-      margin: 0;
-      font-size: $font-size-base;
-      line-height: 1.7;
-      color: $text-color;
+    &--mission {
+      &::after {
+        background: linear-gradient(90deg, $secondary-light 0%, $secondary-accent 100%);
+      }
+    }
 
+    &--goals {
+      &::after {
+        background: linear-gradient(90deg, $primary-accent 0%, $secondary-accent 100%);
+      }
+      
+      // Special metallic styling for the full-width goals card
+      background: linear-gradient(145deg, $silver-light 0%, $silver-medium 40%, $silver-dark 80%, $silver-medium 100%);
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.12),
+        inset 0 2px 0 rgba($metallic-shine, 0.9),
+        inset 0 -2px 0 rgba($metallic-shadow, 0.4);
+    }
+
+    &--full-width {
       @include tablet-up {
-        font-size: $font-size-lg;
+        grid-column: 1 / -1;
       }
     }
   }
 
-  &__closing {
-    text-align: center;
+  &__card-title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $text-color;
+    margin-bottom: $spacing-xl;
+    line-height: 1.2;
+    position: relative;
+    z-index: 3;
+
+    @include tablet-up {
+      font-size: $font-size-3xl;
+      margin-bottom: $spacing-2xl;
+    }
+
+    // Enhanced text shadow for metallic background
+    text-shadow: 0 1px 2px rgba($white, 0.8), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__card-accent {
+    color: $primary-accent;
+    position: relative;
     
-    p {
+    // Enhanced highlight effect for metallic background
+    text-shadow: 0 1px 2px rgba($white, 0.9), 0 0 10px rgba($primary-accent, 0.3);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, $primary-accent 0%, transparent 100%);
+      opacity: 0.4;
+    }
+  }
+
+  &__card-content {
+    font-size: $font-size-base;
+    line-height: 1.7;
+    color: $text-color;
+    position: relative;
+    z-index: 3;
+
+    @include tablet-up {
       font-size: $font-size-lg;
       line-height: 1.8;
-      color: $text-color;
-      margin-bottom: $spacing-lg;
-      font-weight: $font-weight-medium;
-
-      @include tablet-up {
-        font-size: $font-size-xl;
-      }
     }
 
-    &-highlight {
-      font-size: $font-size-xl;
+    // Enhanced readability on metallic background
+    text-shadow: 0 1px 1px rgba($white, 0.6);
+    
+    // Subtle highlight on first letter
+    &::first-letter {
+      font-size: 1.2em;
       font-weight: $font-weight-semibold;
-      background: linear-gradient(135deg, $primary-accent 0%, $secondary-accent 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-      margin-top: $spacing-lg;
-
-      @include tablet-up {
-        font-size: $font-size-2xl;
-      }
+      color: $primary-accent;
+      text-shadow: 0 1px 2px rgba($white, 0.8), 0 0 8px rgba($primary-accent, 0.2);
     }
   }
-
-  // Counter reset for perspective numbering
-  counter-reset: perspective-counter;
 }

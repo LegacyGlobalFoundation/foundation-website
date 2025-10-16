@@ -2,249 +2,199 @@
 @use '../abstracts' as *;
 
 .contact {
-  padding: $spacing-4xl 0;
-  background: linear-gradient(135deg, $text-color 0%, color.adjust($text-color, $lightness: -5%) 100%);
-  color: $white;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba($primary-accent, 0.08) 50%, transparent 70%);
-    pointer-events: none;
-  }
-
+  padding: $spacing-3xl 0;
+  background: linear-gradient(135deg, $background-base 0%, $white 100%);
+  
   &__container {
     @include container;
-    position: relative;
-    z-index: 1;
-  }
-
-  &__header {
-    text-align: center;
-    margin-bottom: $spacing-4xl;
-
-    h2 {
-      font-size: $font-size-3xl;
-      font-weight: $font-weight-bold;
-      color: $primary-accent;
-      margin-bottom: $spacing-lg;
-
-      @include tablet-up {
-        font-size: $font-size-4xl;
-      }
-    }
-
-    &-subtitle {
-      font-size: $font-size-xl;
-      color: $white;
-      font-weight: $font-weight-medium;
-      margin-bottom: $spacing-lg;
-      opacity: 0.9;
-
-      @include tablet-up {
-        font-size: $font-size-2xl;
-      }
-    }
-
-    &-description {
-      font-size: $font-size-lg;
-      color: $white;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.7;
-      opacity: 0.85;
-
-      @include tablet-up {
-        font-size: $font-size-xl;
-      }
-    }
+    max-width: 1200px;
   }
 
   &__content {
     display: grid;
     gap: $spacing-3xl;
-
+    
     @include tablet-up {
       grid-template-columns: 1fr 1fr;
       gap: $spacing-4xl;
+      align-items: start;
     }
   }
 
-  &__info {
-    &-title {
+  // Main info section
+  &__main {
+    @include tablet-up {
+      padding-right: $spacing-xl;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $secondary-accent;
+    margin-bottom: $spacing-md;
+    
+    @include tablet-up {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-xl;
+    color: $primary-accent;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-2xl;
+    
+    @include tablet-up {
       font-size: $font-size-2xl;
-      font-weight: $font-weight-bold;
-      color: $primary-accent;
-      margin-bottom: $spacing-xl;
+    }
+  }
 
-      @include tablet-up {
-        font-size: $font-size-3xl;
-      }
+  // Compact info grid
+  &__info-grid {
+    display: grid;
+    gap: $spacing-lg;
+  }
+
+  &__info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    background: $white;
+    border-radius: $border-radius-lg;
+    border: 1px solid rgba($secondary-accent, 0.1);
+    transition: all $transition-base;
+
+    &:hover {
+      box-shadow: 0 4px 20px rgba($secondary-accent, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__info-icon {
+    font-size: $font-size-2xl;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $primary-accent 0%, $secondary-accent 100%);
+    border-radius: 50%;
+    color: $white;
+    flex-shrink: 0;
+  }
+
+  &__info-details {
+    h4 {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      color: $secondary-accent;
+      margin-bottom: $spacing-xs;
     }
 
-    &-item {
-      background: rgba($white, 0.08);
-      border-radius: $border-radius-lg;
-      padding: $spacing-lg;
-      margin-bottom: $spacing-lg;
-      border-left: 4px solid $primary-accent;
-      transition: all $transition-base;
+    p, a {
+      font-size: $font-size-base;
+      color: $text-color;
+      margin: 0;
+      line-height: 1.4;
+    }
 
+    a {
+      color: $primary-accent;
+      text-decoration: none;
+      font-weight: $font-weight-medium;
+      
       &:hover {
-        background: rgba($white, 0.12);
-        transform: translateX($spacing-sm);
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-
-      h4 {
-        font-size: $font-size-lg;
-        font-weight: $font-weight-bold;
-        color: $white;
-        margin-bottom: $spacing-sm;
-
-        @include tablet-up {
-          font-size: $font-size-xl;
-        }
-      }
-
-      p {
-        font-size: $font-size-base;
-        color: $white;
-        margin: 0;
-        line-height: 1.6;
-        opacity: 0.9;
-
-        @include tablet-up {
-          font-size: $font-size-lg;
-        }
-      }
-
-      a {
-        color: $primary-accent;
-        text-decoration: none;
-        font-weight: $font-weight-medium;
-        transition: color $transition-base;
-
-        &:hover {
-          color: color.adjust($primary-accent, $lightness: 10%);
-          text-decoration: underline;
-        }
+        text-decoration: underline;
       }
     }
   }
 
+  // Compact form
   &__form {
-    background: rgba($white, 0.05);
+    background: $white;
     border-radius: $border-radius-xl;
     padding: $spacing-2xl;
-    border: 1px solid rgba($primary-accent, 0.2);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 30px rgba($secondary-accent, 0.1);
+    border: 1px solid rgba($secondary-accent, 0.1);
 
-    &-title {
+    h3 {
       font-size: $font-size-2xl;
       font-weight: $font-weight-bold;
-      color: $primary-accent;
+      color: $secondary-accent;
       margin-bottom: $spacing-xl;
       text-align: center;
-
-      @include tablet-up {
-        font-size: $font-size-3xl;
-        text-align: left;
-      }
     }
 
-    &-group {
-      margin-bottom: $spacing-lg;
-
-      label {
-        display: block;
-        font-size: $font-size-base;
-        font-weight: $font-weight-medium;
-        color: $white;
-        margin-bottom: $spacing-sm;
-        opacity: 0.9;
-
-        @include tablet-up {
-          font-size: $font-size-lg;
-        }
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        padding: $spacing-md;
-        border: 2px solid rgba($primary-accent, 0.3);
-        border-radius: $border-radius;
-        background: rgba($white, 0.1);
-        color: $white;
-        font-size: $font-size-base;
-        font-family: inherit;
-        transition: all $transition-base;
-
-        @include tablet-up {
-          font-size: $font-size-lg;
-          padding: $spacing-lg;
-        }
-
-        &::placeholder {
-          color: rgba($white, 0.6);
-        }
-
-        &:focus {
-          outline: none;
-          border-color: $primary-accent;
-          background: rgba($white, 0.15);
-          box-shadow: 0 0 0 3px rgba($primary-accent, 0.2);
-        }
-      }
-
-      textarea {
-        resize: vertical;
-        min-height: 120px;
-      }
-    }
-
-    &-button {
-      @include button-primary;
-      width: 100%;
-      font-size: $font-size-lg;
-      padding: $spacing-lg $spacing-xl;
-      margin-top: $spacing-md;
+    @include tablet-up {
+      padding: $spacing-3xl;
     }
   }
 
-  &__disclaimer {
-    background: rgba($secondary-accent, 0.1);
-    border-radius: $border-radius-lg;
-    padding: $spacing-xl;
-    margin-top: $spacing-4xl;
-    border: 1px solid rgba($secondary-accent, 0.3);
-    text-align: center;
+  &__form-grid {
+    display: grid;
+    gap: $spacing-lg;
 
-    p {
-      font-size: $font-size-lg;
-      color: $white;
-      margin: 0;
-      font-style: italic;
-      font-weight: $font-weight-medium;
-      opacity: 0.9;
+    input, textarea {
+      padding: $spacing-md;
+      border: 2px solid rgba($secondary-accent, 0.2);
+      border-radius: $border-radius-md;
+      background: $background-base;
+      color: $text-color;
+      font-size: $font-size-base;
+      font-family: inherit;
+      transition: all $transition-base;
+
+      &::placeholder {
+        color: rgba($text-color, 0.5);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $primary-accent;
+        background: $white;
+        box-shadow: 0 0 0 3px rgba($primary-accent, 0.1);
+      }
+
+      &:hover {
+        border-color: rgba($secondary-accent, 0.4);
+      }
 
       @include tablet-up {
-        font-size: $font-size-xl;
+        padding: $spacing-lg;
       }
     }
 
-    strong {
-      color: $primary-accent;
-      font-weight: $font-weight-bold;
+    // Form grid layout for larger screens
+    @include tablet-up {
+      grid-template-columns: 1fr 1fr;
+      
+      .contact__form-message {
+        grid-column: 1 / -1;
+      }
+      
+      .contact__form-button {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  &__form-message {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  &__form-button {
+    @include button-primary;
+    font-size: $font-size-lg;
+    padding: $spacing-lg $spacing-2xl;
+    width: 100%;
+    justify-self: center;
+    
+    @include tablet-up {
+      width: auto;
+      padding: $spacing-lg $spacing-3xl;
     }
   }
 }
