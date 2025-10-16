@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({
         <div className="header__logo">
           <span className="header__logo-icon">🔗</span>
           <a href="#home" className="header__logo-text">
-            LGF
+            Legacy Global Foundation
           </a>
         </div>
 

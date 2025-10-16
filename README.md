@@ -110,7 +110,7 @@ src/
 
 - Hero section with tagline
 - Mission/Story section
-- Two Pillars section (Basic Needs & Forward Tools)
+- Two focus section (Basic Needs & Forward Tools)
 - Partnership section
 - Contact section
 

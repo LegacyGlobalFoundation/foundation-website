@@ -86,7 +86,7 @@ Aesthetic: Use the dark background (dark-bg).
 
 Logo/Title: "🔗 LGF" (in primary orange).
 
-Links: "Our Story" (#mission), "Pillars" (#pillars), "Partnership" (#partnership), "Contact Us" (#contact).
+Links: "Our Story" (#mission), "focus" (#focus), "Partnership" (#partnership), "Contact Us" (#contact).
 
 B. Hero Section (#hero)
 Headline: "Reaching Forward. Giving Chances."
@@ -104,7 +104,7 @@ Ripple Beams Legacy: Drives the Basic Needs mission (Pillar 1 focus).
 
 LineaBlu Lawyers: Drives legal and structural expertise (Pillar 2 focus).
 
-D. Two Pillars Section (#pillars)
+D. Two focus Section (#focus)
 Pillar 1: Basic Needs (#basic-needs)
 Focus: Direct Support for Immediate Needs.
 
