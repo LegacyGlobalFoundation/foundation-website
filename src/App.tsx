@@ -338,7 +338,7 @@ const App: React.FC = () => {
               <div className="focus__item">
                 <div className="focus__item-media">
                   <img 
-                    src="/image-1.jpeg" 
+                    src="/children-santiser.jpg" 
                     alt="Basic Needs Support Program" 
                     className="focus__item-image"
                   />
@@ -382,7 +382,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="focus__item-media">
                   <img 
-                    src="/image-4-gemini.png" 
+                    src="/children-school.jpg" 
                     alt="Forward Tools Development Program" 
                     className="focus__item-image"
                   />
@@ -393,7 +393,7 @@ const App: React.FC = () => {
               <div className="focus__item">
                 <div className="focus__item-media">
                   <img 
-                    src="/image-5-gemini.png" 
+                    src="/family.jpg" 
                     alt="Collaborative Community Impact" 
                     className="focus__item-image"
                   />
