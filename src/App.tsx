@@ -286,7 +286,7 @@ const App: React.FC = () => {
               <p className="focus__description">
                 Did you know that we regularly share our impact stories? We document our community work, 
                 partnership successes, and the real change happening in communities via our updates and stories. 
-                Learn more about our work below or visit our social channels to see more.
+                Learn more about our work below
               </p>
             </div>
 
@@ -300,10 +300,10 @@ const App: React.FC = () => {
                     "The best way to find yourself is to lose yourself in the service of others."
                   </blockquote>
                   <div className="focus__founder-info">
-                    <h4 className="focus__founder-name">Sarah Johnson</h4>
-                    <p className="focus__founder-title">Co-Founder & CEO</p>
+                    <h4 className="focus__founder-name">Siphokazi Oranuba</h4>
+                    <p className="focus__founder-title">Co-Founder</p>
                     <a 
-                      href="https://linkedin.com/in/sarahjohnson" 
+                      href="https://www.linkedin.com/in/siphokazi-oranuba/" 
                       className="focus__founder-linkedin"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -318,10 +318,10 @@ const App: React.FC = () => {
                     "Education is the most powerful weapon which you can use to change the world."
                   </blockquote>
                   <div className="focus__founder-info">
-                    <h4 className="focus__founder-name">Michael Chen</h4>
-                    <p className="focus__founder-title">Co-Founder & Director</p>
+                    <h4 className="focus__founder-name">Desmond Oranuba</h4>
+                    <p className="focus__founder-title">Co-Founder</p>
                     <a 
-                      href="https://linkedin.com/in/michaelchen" 
+                      href="https://www.linkedin.com/in/des0409/" 
                       className="focus__founder-linkedin"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -349,7 +349,7 @@ const App: React.FC = () => {
                   </h3>
                   <div className="focus__item-line"></div>
                   <p className="focus__item-description">
-                    Legacy Global Foundation partners with Ripple Beams Legacy to provide essential support 
+                    Legacy Global Foundation partners with Ripple Beams to provide essential support 
                     for daily life. Our Basic Needs initiative ensures families have access to nutritious meals, 
                     personal hygiene supplies, and emergency assistance. We believe that addressing immediate needs 
                     creates the foundation for long-term growth and community development.
@@ -540,7 +540,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="partnership__partner-logo">
                   <svg width="140" height="70" viewBox="0 0 140 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <title>Education Department Gauteng</title>
+                    <title>Education Department</title>
                     {/* Education Department Logo SVG */}
                     <circle cx="25" cy="35" r="15" fill="#FF8800" opacity="0.2"/>
                     <path d="M20 28h10l-2 4h-6l-2-4zm2 6h6v8h-6v-8z" fill="#4C2A70"/>
