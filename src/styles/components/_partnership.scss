@@ -4,14 +4,15 @@
 .partnership {
   padding: $spacing-4xl 0;
   background: linear-gradient(135deg, 
-    rgba($background-base, 0.95) 0%, 
-    rgba($silver-light, 0.85) 40%, 
-    rgba($background-base, 0.9) 100%);
+    $gray-200 0%, 
+    color.adjust($gray-300, $lightness: 5%) 30%,
+    $gray-300 70%,
+    color.adjust($gray-400, $lightness: -5%) 100%);
   color: $text-color;
   position: relative;
   overflow: hidden;
 
-  // Professional warm overlay pattern
+  // Optimized subtle background pattern
   &::before {
     content: '';
     position: absolute;
@@ -20,24 +21,25 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 25% 25%, rgba($primary-accent, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba($secondary-accent, 0.06) 0%, transparent 50%),
-      linear-gradient(135deg, transparent 30%, rgba($primary-accent, 0.03) 50%, transparent 70%);
+      radial-gradient(circle at 20% 30%, rgba($primary-accent, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba($secondary-accent, 0.04) 0%, transparent 50%);
     pointer-events: none;
+    will-change: transform;
   }
   
-  // Subtle decorative elements for warmth
+  // Simplified decorative element
   &::after {
     content: '';
     position: absolute;
-    top: 10%;
-    right: 5%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba($primary-accent, 0.1) 0%, transparent 70%);
+    top: 15%;
+    right: 8%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, 
+      rgba($primary-accent, 0.08) 0%, 
+      transparent 70%);
     border-radius: 50%;
-    filter: blur(100px);
-    animation: floatWarm 15s ease-in-out infinite;
+    opacity: 0.6;
     pointer-events: none;
   }
 
@@ -51,43 +53,68 @@
     text-align: center;
     margin-bottom: $spacing-4xl;
     position: relative;
+    
+    // Optimized subtle backdrop for header
+    &::before {
+      content: '';
+      position: absolute;
+      top: -$spacing-lg;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: calc(100% + #{$spacing-xl});
+      background: rgba($white, 0.08);
+      border-radius: $border-radius-xl;
+      z-index: -1;
+    }
 
     h2 {
       font-size: $font-size-3xl;
       font-weight: $font-weight-bold;
-      color: $secondary-accent;
+      color: $text-color;
       margin-bottom: $spacing-lg;
       position: relative;
       line-height: 1.2;
       letter-spacing: -0.02em;
       
-      // Warm professional text enhancement
-      text-shadow: 0 2px 4px rgba($secondary-accent, 0.1);
+      // Enhanced professional text styling
+      text-shadow: 0 2px 8px rgba($primary-accent, 0.15);
+      background: linear-gradient(135deg, $text-color 0%, color.adjust($text-color, $lightness: 10%) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      
+      // Add subtle animation on load
+      animation: slideInFromTop 0.8s ease-out;
 
       @include tablet-up {
         font-size: $font-size-4xl;
       }
       
-      // Elegant underline accent
+      // Enhanced underline accent with animation
       &::after {
         content: '';
         position: absolute;
-        bottom: -8px;
+        bottom: -12px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 3px;
-        background: linear-gradient(90deg, $primary-accent 0%, $secondary-accent 100%);
+        width: 0;
+        height: 4px;
+        background: linear-gradient(90deg, 
+          $primary-accent 0%, 
+          $secondary-accent 50%, 
+          $primary-accent 100%);
         border-radius: $border-radius-full;
+        box-shadow: 0 2px 8px rgba($primary-accent, 0.3);
+        animation: expandLine 1.2s ease-out 0.5s forwards;
       }
     }
 
     &-subtitle {
       font-size: $font-size-xl;
-      color: color.adjust($text-color, $lightness: 5%);
+      color: $text-color;
       font-weight: $font-weight-medium;
       margin-bottom: $spacing-xl;
-      opacity: 0.9;
+      opacity: 0.8;
       font-style: italic;
 
       @include tablet-up {
@@ -101,12 +128,11 @@
       max-width: 850px;
       margin: 0 auto;
       line-height: 1.8;
-      opacity: 0.85;
-      background: rgba($white, 0.6);
+      opacity: 1;
+      background: rgba($white, 0.95);
       padding: $spacing-xl $spacing-2xl;
       border-radius: $border-radius-xl;
-      border: 1px solid rgba($primary-accent, 0.15);
-      backdrop-filter: blur(10px);
+      border: 1px solid rgba($primary-accent, 0.2);
 
       @include tablet-up {
         font-size: $font-size-xl;
@@ -118,15 +144,14 @@
   &__philosophy {
     background: linear-gradient(135deg, 
       rgba($white, 0.8) 0%, 
-      rgba($background-base, 0.9) 100%);
+      rgba($background-light, 0.9) 100%);
     border-radius: $border-radius-xl;
     padding: $spacing-3xl;
     margin-bottom: $spacing-4xl;
     border: 1px solid rgba($primary-accent, 0.2);
-    backdrop-filter: blur(15px);
     box-shadow: 
-      0 8px 32px rgba($secondary-accent, 0.08),
-      0 2px 8px rgba($primary-accent, 0.05);
+      0 4px 16px rgba($secondary-accent, 0.06),
+      0 1px 4px rgba($primary-accent, 0.04);
     position: relative;
     overflow: hidden;
     
@@ -192,20 +217,22 @@
   }
 
   &__step {
-    background: linear-gradient(135deg, 
-      rgba($white, 0.9) 0%, 
-      rgba($background-base, 0.8) 100%);
+    background: linear-gradient(145deg, 
+      rgba($white, 0.95) 0%, 
+      rgba($background-light, 0.85) 40%,
+      rgba($white, 0.9) 100%);
     border-radius: $border-radius-xl;
-    padding: $spacing-2xl;
+    padding: $spacing-2xl $spacing-xl;
     text-align: center;
-    border: 1px solid rgba($primary-accent, 0.15);
-    transition: all $transition-base;
+    border: 1px solid rgba($primary-accent, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     box-shadow: 
-      0 4px 16px rgba($secondary-accent, 0.06),
-      0 1px 4px rgba($primary-accent, 0.04);
-
+      0 8px 25px rgba($secondary-accent, 0.08),
+      0 3px 12px rgba($primary-accent, 0.06),
+      inset 0 1px 0 rgba($white, 0.8);
+    
     &::before {
       content: '';
       position: absolute;
@@ -213,11 +240,14 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, $primary-accent 0%, $secondary-accent 100%);
+      background: linear-gradient(90deg, 
+        $primary-accent 0%, 
+        $secondary-accent 50%, 
+        $primary-accent 100%);
       border-radius: $border-radius-xl $border-radius-xl 0 0;
     }
     
-    // Warm glow effect on hover
+    // Simplified hover effect
     &::after {
       content: '';
       position: absolute;
@@ -225,23 +255,32 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at center, rgba($primary-accent, 0.05) 0%, transparent 70%);
+      background: rgba($primary-accent, 0.04);
       opacity: 0;
-      transition: opacity $transition-base;
+      transition: opacity 0.3s ease;
     }
 
     &:hover {
-      transform: translateY(-8px);
-      background: linear-gradient(135deg, 
-        rgba($white, 0.95) 0%, 
-        rgba($background-base, 0.9) 100%);
-      border-color: rgba($primary-accent, 0.3);
+      transform: translateY(-6px);
+      background: linear-gradient(145deg, 
+        rgba($white, 0.98) 0%, 
+        rgba($background-light, 0.92) 40%,
+        rgba($white, 0.95) 100%);
+      border-color: rgba($primary-accent, 0.4);
       box-shadow: 
-        0 12px 32px rgba($secondary-accent, 0.12),
-        0 4px 16px rgba($primary-accent, 0.08);
+        0 20px 45px rgba($secondary-accent, 0.15),
+        0 8px 25px rgba($primary-accent, 0.12),
+        inset 0 1px 0 rgba($white, 0.9);
         
       &::after {
         opacity: 1;
+      }
+      
+      .partnership__step-number {
+        transform: scale(1.1) rotateY(5deg);
+        box-shadow: 
+          0 8px 25px rgba($primary-accent, 0.4),
+          0 4px 15px rgba($secondary-accent, 0.3);
       }
     }
 
@@ -249,36 +288,54 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 70px;
-      height: 70px;
+      width: 75px;
+      height: 75px;
       background: linear-gradient(135deg, 
         $primary-accent 0%, 
-        color.adjust($primary-accent, $lightness: 15%) 50%,
+        color.adjust($primary-accent, $lightness: 12%) 25%,
+        color.adjust($secondary-accent, $lightness: 8%) 75%,
         $secondary-accent 100%);
       border-radius: 50%;
-      font-size: $font-size-xl;
-      font-weight: $font-weight-bold;
+      font-size: $font-size-2xl;
+      font-weight: 800;
       color: $white;
       margin-bottom: $spacing-xl;
       position: relative;
       box-shadow: 
-        0 4px 16px rgba($primary-accent, 0.3),
-        0 2px 8px rgba($secondary-accent, 0.2);
-      transition: all $transition-base;
+        0 8px 25px rgba($primary-accent, 0.4),
+        0 4px 15px rgba($secondary-accent, 0.3),
+        inset 0 2px 0 rgba($white, 0.25),
+        inset 0 -2px 0 rgba(rgba(0, 0, 0, 0.2), 0.3);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba($white, 0.3);
       
-      // Warm glow ring
+      // Simplified ring effect
       &::before {
         content: '';
         position: absolute;
-        top: -3px;
-        left: -3px;
-        right: -3px;
-        bottom: -3px;
-        background: linear-gradient(135deg, $primary-accent, $secondary-accent);
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        background: linear-gradient(135deg, 
+          rgba($primary-accent, 0.3) 0%, 
+          rgba($secondary-accent, 0.2) 100%);
         border-radius: 50%;
         z-index: -1;
         opacity: 0;
-        transition: opacity $transition-base;
+        transition: opacity 0.3s ease;
+      }
+      
+      // Simple metallic highlight
+      &::after {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 25%;
+        width: 20%;
+        height: 20%;
+        background: rgba($white, 0.4);
+        border-radius: 50%;
       }
       
       .partnership__step:hover & {
@@ -295,20 +352,51 @@
 
     &-title {
       font-size: $font-size-lg;
-      font-weight: $font-weight-bold;
-      color: $secondary-accent;
+      font-weight: 700;
+      background: linear-gradient(135deg, 
+        $primary-accent 0%, 
+        color.adjust($primary-accent, $lightness: -10%) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: $spacing-md;
+      position: relative;
+      transition: all 0.4s ease;
 
       @include tablet-up {
         font-size: $font-size-xl;
+      }
+      
+      // Professional underline effect
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, $primary-accent, $secondary-accent);
+        border-radius: 2px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+      }
+      
+      .partnership__step:hover & {
+        transform: translateY(-2px);
+        
+        &::after {
+          width: 80%;
+        }
       }
     }
 
     &-description {
       font-size: $font-size-base;
-      color: $text-color;
-      line-height: 1.6;
-      opacity: 0.75;
+      color: color.adjust($text-color, $lightness: -5%);
+      line-height: 1.7;
+      opacity: 0.9;
+      font-weight: 500;
+      transition: all 0.3s ease;
 
       @include tablet-up {
         font-size: $font-size-lg;
@@ -317,15 +405,42 @@
   }
 
   &__advantages {
+    padding: $spacing-2xl 0;
+    
     &-title {
       font-size: $font-size-2xl;
-      font-weight: $font-weight-bold;
-      color: $secondary-accent;
+      font-weight: 800;
+      background: linear-gradient(135deg, 
+        $text-color 0%, 
+        color.adjust($text-color, $lightness: 15%) 50%,
+        $primary-accent 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-align: center;
       margin-bottom: $spacing-2xl;
+      position: relative;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
 
       @include tablet-up {
         font-size: $font-size-3xl;
+      }
+      
+      // Professional accent line
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, 
+          $primary-accent 0%, 
+          $secondary-accent 50%, 
+          $primary-accent 100%);
+        border-radius: 2px;
+        transform: translateX(-50%);
+        box-shadow: 0 2px 8px rgba($primary-accent, 0.4);
       }
     }
 
@@ -341,18 +456,22 @@
   }
 
   &__advantage {
-    background: linear-gradient(135deg, 
-      rgba($white, 0.85) 0%, 
-      rgba($background-base, 0.7) 100%);
+    background: linear-gradient(145deg, 
+      rgba($white, 0.92) 0%, 
+      rgba($background-light, 0.8) 50%,
+      rgba($white, 0.88) 100%);
     border-radius: $border-radius-xl;
     padding: $spacing-xl $spacing-2xl;
-    border-left: 5px solid transparent;
-    border-image: linear-gradient(180deg, $primary-accent 0%, $secondary-accent 100%) 1;
-    transition: all $transition-base;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    box-shadow: 0 2px 8px rgba($secondary-accent, 0.05);
+    box-shadow: 
+      0 8px 25px rgba($secondary-accent, 0.08),
+      0 4px 12px rgba($primary-accent, 0.05),
+      inset 0 1px 0 rgba($white, 0.7);
+    border: 1px solid rgba($primary-accent, 0.15);
+    overflow: hidden;
     
-    // Professional left accent
+    // Simple left accent
     &::before {
       content: '';
       position: absolute;
@@ -360,29 +479,33 @@
       left: 0;
       bottom: 0;
       width: 5px;
-      background: linear-gradient(180deg, $primary-accent 0%, $secondary-accent 100%);
+      background: linear-gradient(180deg, 
+        $primary-accent 0%, 
+        $secondary-accent 100%);
       border-radius: 0 $border-radius-sm $border-radius-sm 0;
+      transition: width 0.3s ease;
     }
 
     &:hover {
-      background: linear-gradient(135deg, 
-        rgba($white, 0.95) 0%, 
-        rgba($background-base, 0.85) 100%);
-      transform: translateX($spacing-md);
+      background: linear-gradient(145deg, 
+        rgba($white, 0.98) 0%, 
+        rgba($background-light, 0.9) 50%,
+        rgba($white, 0.95) 100%);
+      transform: translateY(-4px) translateX($spacing-xs);
       box-shadow: 
-        0 6px 20px rgba($secondary-accent, 0.1),
-        0 2px 8px rgba($primary-accent, 0.06);
+        0 8px 20px rgba($secondary-accent, 0.1),
+        0 4px 12px rgba($primary-accent, 0.08);
+      border-color: rgba($primary-accent, 0.3);
         
       &::before {
         width: 8px;
-        box-shadow: 0 0 12px rgba($primary-accent, 0.3);
       }
     }
 
     &-title {
       font-size: $font-size-lg;
       font-weight: $font-weight-bold;
-      color: $secondary-accent;
+      color: $primary-accent;
       margin-bottom: $spacing-sm;
 
       @include tablet-up {
@@ -394,7 +517,7 @@
       font-size: $font-size-base;
       color: $text-color;
       line-height: 1.6;
-      opacity: 0.75;
+      opacity: 0.85;
 
       @include tablet-up {
         font-size: $font-size-lg;
@@ -410,11 +533,11 @@
     &-title {
       font-size: $font-size-2xl;
       font-weight: $font-weight-bold;
-      color: $secondary-accent;
+      color: $text-color;
       margin-bottom: $spacing-xl;
       letter-spacing: 0.5px;
       position: relative;
-      text-shadow: 0 2px 4px rgba($secondary-accent, 0.1);
+      text-shadow: 0 2px 4px rgba($primary-accent, 0.1);
 
       @include tablet-up {
         font-size: $font-size-3xl;
@@ -440,7 +563,7 @@
       line-height: 1.7;
       max-width: 750px;
       margin: 0 auto $spacing-3xl;
-      opacity: 0.85;
+      opacity: 0.8;
       font-weight: $font-weight-medium;
 
       @include tablet-up {
@@ -458,7 +581,7 @@
       padding: $spacing-3xl;
       background: linear-gradient(135deg, 
         rgba($white, 0.9) 0%, 
-        rgba($background-base, 0.8) 100%);
+        rgba($background-light, 0.8) 100%);
       border-radius: $border-radius-xl;
       border: 1px solid rgba($primary-accent, 0.15);
       box-shadow: 
@@ -483,7 +606,7 @@
     padding: $spacing-lg;
     background: linear-gradient(135deg, 
       rgba($white, 0.95) 0%, 
-      rgba($background-base, 0.9) 100%);
+      rgba($background-light, 0.9) 100%);
     border-radius: $border-radius-lg;
     border: 1px solid rgba($primary-accent, 0.12);
     transition: all $transition-base;
@@ -602,9 +725,21 @@
       }
     }
   }
+
+  &__steps {
+    &-grid {
+      display: grid;
+      gap: $spacing-lg;
+
+      @include tablet-up {
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacing-xl;
+      }
+    }
+  }
 }
 
-// Warm animation for decorative elements
+// Professional animation keyframes
 @keyframes floatWarm {
   0%, 100% {
     transform: translateY(0) translateX(0) scale(1);
@@ -617,5 +752,14 @@
   66% {
     transform: translateY(10px) translateX(-5px) scale(0.9);
     opacity: 0.7;
+  }
+}
+
+@keyframes expandLine {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80%;
   }
 }

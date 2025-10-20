@@ -3,7 +3,8 @@
 
 .contact {
   padding: $spacing-3xl 0;
-  background: linear-gradient(135deg, $background-base 0%, $white 100%);
+  background: linear-gradient(135deg, $gray-700 0%, $dark-header-bg 100%);
+  color: $white;
   
   &__container {
     @include container;
@@ -31,7 +32,7 @@
   &__title {
     font-size: $font-size-3xl;
     font-weight: $font-weight-bold;
-    color: $secondary-accent;
+    color: $white;
     margin-bottom: $spacing-md;
     
     @include tablet-up {
@@ -140,7 +141,7 @@
       padding: $spacing-md;
       border: 2px solid rgba($secondary-accent, 0.2);
       border-radius: $border-radius-md;
-      background: $background-base;
+      background: $background-light;
       color: $text-color;
       font-size: $font-size-base;
       font-family: inherit;
