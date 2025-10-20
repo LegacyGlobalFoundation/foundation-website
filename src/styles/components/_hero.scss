@@ -22,7 +22,7 @@
     background-attachment: scroll; // Better performance on mobile
   }
 
-  // Dark overlay for text legibility as per specifications
+  // Enhanced overlay with premium shine effects
   &::before {
     content: '';
     position: absolute;
@@ -32,9 +32,10 @@
     bottom: 0;
     background: linear-gradient(
       135deg,
-      rgba($dark-header-bg, 0.5) 0%,
-      rgba($secondary-light, 0.4) 50%,
-      rgba($primary-accent-light, 0.3) 100%
+      rgba($dark-header-bg, 0.6) 0%,
+      rgba($secondary-light, 0.4) 30%,
+      rgba($primary-accent-light, 0.3) 70%,
+      rgba($dark-header-bg, 0.5) 100%
     );
     z-index: 1;
   }
@@ -53,12 +54,17 @@
     font-size: $font-size-4xl;
     font-weight: $font-weight-bold;
     margin-bottom: $spacing-lg;
-    background: linear-gradient(135deg, $primary-accent 0%, color.adjust($primary-accent, $lightness: 20%) 50%, $white 100%);
+    background: linear-gradient(135deg, 
+      $primary-accent 0%, 
+      color.adjust($primary-accent, $lightness: 25%) 30%,
+      $white 70%,
+      color.adjust($primary-accent, $lightness: 15%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 1.2;
-    text-shadow: 0 2px 10px rgba($dark-header-bg, 0.3);
+    text-shadow: 0 4px 20px rgba($dark-header-bg, 0.4);
+    position: relative;
 
     @include tablet-up {
       font-size: $font-size-5xl;
@@ -77,7 +83,12 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 0 1px 3px rgba($dark-header-bg, 0.5);
+    text-shadow: 0 2px 8px rgba($dark-header-bg, 0.6);
+    backdrop-filter: blur(2px);
+    padding: $spacing-md;
+    border-radius: $border-radius-lg;
+    background: rgba($white, 0.05);
+    border: 1px solid rgba($white, 0.1);
     opacity: 0.95;
 
     @include tablet-up {
@@ -110,17 +121,35 @@
     font-weight: $font-weight-semibold;
     border-radius: $border-radius-lg;
     text-decoration: none;
-    transition: all $transition-base;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     min-width: 200px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 
     &--primary {
-      background: linear-gradient(135deg, $primary-accent 0%, color.adjust($primary-accent, $lightness: -10%) 100%);
+      background: linear-gradient(135deg, 
+        $primary-accent 0%, 
+        color.adjust($primary-accent, $lightness: -5%) 50%,
+        color.adjust($primary-accent, $lightness: -15%) 100%);
       color: $white;
-      border: 2px solid transparent;
+      border: 2px solid rgba($white, 0.2);
+      box-shadow: 
+        0 8px 25px rgba($primary-accent, 0.4),
+        0 4px 12px rgba($dark-header-bg, 0.3),
+        inset 0 1px 0 rgba($white, 0.2);
 
       &:hover {
-        background: linear-gradient(135deg, color.adjust($primary-accent, $lightness: 5%) 0%, $primary-accent 100%);
-        transform: translateY(-3px);
+        background: linear-gradient(135deg, 
+          color.adjust($primary-accent, $lightness: 10%) 0%, 
+          $primary-accent 50%,
+          color.adjust($primary-accent, $lightness: -10%) 100%);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 
+          0 15px 40px rgba($primary-accent, 0.5),
+          0 8px 20px rgba($dark-header-bg, 0.4),
+          inset 0 1px 0 rgba($white, 0.3);
         box-shadow: 0 8px 25px rgba($primary-accent, 0.4);
       }
     }
@@ -160,7 +189,6 @@
     color: rgba($white, 0.8);
     font-size: $font-size-sm;
     text-align: center;
-    animation: bounce 2s infinite;
 
     &::before {
       content: '↓';
@@ -172,17 +200,5 @@
     @include mobile-only {
       display: none;
     }
-  }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
   }
 }

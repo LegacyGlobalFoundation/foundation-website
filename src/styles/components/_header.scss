@@ -6,9 +6,48 @@
   top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(135deg, $dark-header-bg 0%, rgba($secondary-accent, 0.9) 100%);
-  box-shadow: $shadow-lg;
+  background: linear-gradient(135deg, 
+    $dark-header-bg 0%, 
+    rgba($secondary-accent, 0.95) 50%,
+    rgba($dark-header-bg, 0.98) 100%);
+  backdrop-filter: blur(20px) saturate(1.2);
+  box-shadow: 
+    $shadow-lg,
+    0 1px 0 rgba($white, 0.1) inset,
+    0 -1px 0 rgba($primary-accent, 0.2);
   z-index: $z-index-fixed;
+  border-bottom: 1px solid rgba($primary-accent, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Premium glass effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, 
+      rgba($white, 0.1) 0%, 
+      transparent 100%);
+    pointer-events: none;
+  }
+  
+  // Animated shine sweep
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba($primary-accent, 0.1) 50%, 
+      transparent 100%);
+    animation: headerShine 8s ease-in-out infinite;
+    pointer-events: none;
+  }
   
   &__container {
     @include container;
@@ -20,20 +59,53 @@
   &__logo {
     @include flex-center;
     gap: $spacing-sm;
+    position: relative;
+    z-index: 2;
     
     &-icon {
       font-size: $font-size-2xl;
       color: $primary-accent;
+      filter: drop-shadow(0 0 8px rgba($primary-accent, 0.5));
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 12px rgba($primary-accent, 0.8));
+      }
     }
     
     &-text {
       font-size: $font-size-2xl;
       font-weight: $font-weight-bold;
-      color: $primary-accent;
+      background: linear-gradient(135deg, 
+        $primary-accent 0%, 
+        color.adjust($primary-accent, $lightness: 20%) 50%,
+        $primary-accent 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-decoration: none;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      // Premium text shadow effect
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: $primary-accent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: blur(1px);
+        opacity: 0.3;
+        z-index: -1;
+      }
       
       &:hover {
-        color: color.adjust($primary-accent, $lightness: 10%);
+        transform: translateY(-1px);
+        filter: drop-shadow(0 2px 8px rgba($primary-accent, 0.4));
       }
     }
   }
@@ -82,5 +154,18 @@
     @include tablet-up {
       display: none !important;
     }
+  }
+}
+
+// Premium header animations
+@keyframes headerShine {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
   }
 }
