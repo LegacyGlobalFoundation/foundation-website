@@ -102,7 +102,7 @@
     }
 
     a {
-      color: $primary-accent;
+      color: $text-color;
       text-decoration: none;
       font-weight: $font-weight-medium;
       
@@ -153,13 +153,13 @@
 
       &:focus {
         outline: none;
-        border-color: $primary-accent;
+        border-color: $gray-500;
         background: $white;
-        box-shadow: 0 0 0 3px rgba($primary-accent, 0.1);
+        box-shadow: 0 0 0 3px rgba($gray-400, 0.1);
       }
 
       &:hover {
-        border-color: rgba($secondary-accent, 0.4);
+        border-color: rgba($gray-500, 0.4);
       }
 
       @include tablet-up {

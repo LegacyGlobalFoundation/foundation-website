@@ -50,7 +50,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, $primary-accent 0%, $secondary-accent 100%);
+    background: $gray-500;
   }
   
   &:hover {
@@ -74,7 +74,7 @@
   transition: all $transition-base;
   
   &:focus {
-    outline: 2px solid $primary-accent;
+    outline: 2px solid $gray-500;
     outline-offset: 2px;
   }
   
@@ -87,11 +87,11 @@
 // Primary button variant
 @mixin button-primary {
   @include button-base;
-  background-color: $primary-accent;
+  background-color: $text-color;
   color: $white;
   
   &:hover:not(:disabled) {
-    background-color: color.adjust($primary-accent, $lightness: -10%);
+    background-color: color.adjust($text-color, $lightness: -10%);
     transform: translateY(-2px);
     box-shadow: $shadow-md;
   }

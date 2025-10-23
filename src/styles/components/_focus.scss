@@ -35,13 +35,13 @@
   }
 
   &__title-accent {
-    color: $primary-accent;
+    color: $text-color;
   }
 
   &__title-line {
     width: 100px;
     height: 4px;
-    background: $primary-accent;
+    background: $gray-500;
     margin-bottom: $spacing-xl;
   }
 
@@ -134,7 +134,7 @@
         0 30px 60px rgba($gray-400, 0.25),
         0 12px 25px rgba($gray-500, 0.15),
         inset 0 1px 0 rgba($white, 0.7);
-      border-color: rgba($primary-accent, 0.4);
+      border-color: rgba($gray-400, 0.4);
       background: linear-gradient(145deg, 
         rgba($white, 0.98) 0%, 
         rgba($gray-100, 0.95) 50%,
@@ -264,18 +264,14 @@
   }
 
   &__item-accent {
-    color: $primary-accent;
+    color: $text-color;
     position: relative;
-    background: linear-gradient(135deg, $primary-accent 0%, $secondary-accent 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   &__item-line {
     width: 50px; // Slightly smaller line
     height: 3px;
-    background: linear-gradient(90deg, $primary-accent 0%, $secondary-accent 100%);
+    background: $gray-400;
     margin-bottom: $spacing-lg; // Reduced from $spacing-xl
     border-radius: $border-radius-sm;
     transition: all $transition-base;
@@ -283,7 +279,6 @@
     .focus__item:hover & {
       width: 70px; // Reduced hover expansion
       height: 4px;
-      box-shadow: 0 2px 8px rgba($primary-accent, 0.3);
     }
   }
 

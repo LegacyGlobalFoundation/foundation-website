@@ -90,12 +90,12 @@ p {
 
 // Links
 a {
-  color: $primary-accent;
+  color: $text-color;
   text-decoration: none;
   transition: color $transition-base;
   
   &:hover {
-    color: color.adjust($primary-accent, $lightness: -15%);
+    color: $text-color;
   }
   
   @include focus-ring;

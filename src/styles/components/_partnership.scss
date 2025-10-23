@@ -280,13 +280,13 @@
         rgba($white, 0.99) 70%,
         rgba($background-light, 0.94) 100%);
       backdrop-filter: blur(16px) saturate(2.2);
-      border-color: rgba($primary-accent, 0.5);
+      border-color: rgba($gray-400, 0.5);
       box-shadow: 
-        0 25px 55px rgba($secondary-accent, 0.2),
-        0 12px 30px rgba($primary-accent, 0.15),
-        0 6px 15px rgba($secondary-accent, 0.1),
+        0 25px 55px rgba($gray-500, 0.2),
+        0 12px 30px rgba($gray-400, 0.15),
+        0 6px 15px rgba($gray-500, 0.1),
         inset 0 3px 6px rgba($white, 0.95),
-        inset 0 -2px 4px rgba($primary-accent, 0.15);
+        inset 0 -2px 4px rgba($gray-400, 0.15);
         
       // Trigger shine sweep animation
       &::after {
@@ -298,19 +298,15 @@
         height: 8px;
         background: linear-gradient(90deg, 
           transparent 0%,
-          $primary-accent 10%, 
-          rgba($secondary-accent, 1.2) 50%, 
-          $primary-accent 90%,
+          $gray-500 10%, 
+          $gray-600 50%, 
+          $gray-500 90%,
           transparent 100%);
       }
       
       .partnership__step-number {
         transform: scale(1.15) rotateY(8deg);
-        background: linear-gradient(135deg, $primary-accent, $secondary-accent);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 4px 12px rgba($primary-accent, 0.3);
+        color: $text-color;
       }
     }
 
